@@ -10,6 +10,7 @@
     <ul>
         <a href="{{route('Principal/Productos')}}"><li>Productos</li></a>
         <a href="{{route('Principal/Categorias')}}"><li>Categorías</li></a>
+        <a href="{{route('productos_paginacion')}}"><li>Paginación</li></a>
     </ul>
 </body>
 </html>

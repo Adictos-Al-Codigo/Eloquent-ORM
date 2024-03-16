@@ -219,4 +219,10 @@ class ProductoController extends Controller
         return redirect()->route('Fotos', ['id' => $idProducto]);
     }
 
+    public function productos_paginacion(){
+
+        $productos = DB::table('productos')->join('categorias', 'productos.idCategorias', '=', 'categorias.id')->select('productos.*', 'categorias.id as CategoriaID', 'categorias.categoria','categorias.slug')->orderBy('id','desc')->paginate(5);
+        return view('layouts.bd_paginacion', compact('productos'));
+    }
+
 }

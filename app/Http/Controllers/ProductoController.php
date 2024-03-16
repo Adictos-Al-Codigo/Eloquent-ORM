@@ -229,7 +229,7 @@ class ProductoController extends Controller
         if (isset($_GET['b'])) {
             $b = $_GET['b'];
             // Productos::where(['nombre' => $b])->get();
-            $productos = DB::table('productos')->join('categorias', 'productos.idCategorias', '=', 'categorias.id')->select('productos.*', 'categorias.id as CategoriaID', 'categorias.categoria','categorias.slug')->where('nombre',$b)->orderBy('id','desc')->paginate(5);
+            $productos = DB::table('productos')->join('categorias', 'productos.idCategorias', '=', 'categorias.id')->select('productos.*', 'categorias.id as CategoriaID', 'categorias.categoria','categorias.slug')->where('nombre','like','%'.$b.'%')->orderBy('id','desc')->paginate(5);
         }else{
             $productos = DB::table('productos')->join('categorias', 'productos.idCategorias', '=', 'categorias.id')->select('productos.*', 'categorias.id as CategoriaID', 'categorias.categoria','categorias.slug')->orderBy('id','desc')->paginate(5);
         }

@@ -41,3 +41,4 @@ Route::get('/Productos/Foto/{id}', [ProductoController::class, 'VistaFoto'])->na
 Route::post('/Productos/Foto/Guardar/{id}', [ProductoController::class, 'FotosGuardar'])->name('SavePhoto');
 Route::get('/Productos/Fotos/Delete/{producto_id}/{foto_id}',[ProductoController::class, 'DeletePhoto'])->name('DeletePhoto');
 Route::get('/Productos/Paginacion', [ProductoController::class, 'productos_paginacion'])->name('productos_paginacion');
+Route::get('/bd/buscador', [ProductoController::class, 'buscador_interno'])->name('buscador_interno');

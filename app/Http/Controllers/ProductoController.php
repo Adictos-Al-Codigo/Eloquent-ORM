@@ -225,4 +225,15 @@ class ProductoController extends Controller
         return view('layouts.bd_paginacion', compact('productos'));
     }
 
+    public function buscador_interno(){
+        if (isset($_GET['b'])) {
+            $b = $_GET['b'];
+            // Productos::where(['nombre' => $b])->get();
+            $productos = DB::table('productos')->join('categorias', 'productos.idCategorias', '=', 'categorias.id')->select('productos.*', 'categorias.id as CategoriaID', 'categorias.categoria','categorias.slug')->where('nombre',$b)->orderBy('id','desc')->paginate(5);
+        }else{
+            $productos = DB::table('productos')->join('categorias', 'productos.idCategorias', '=', 'categorias.id')->select('productos.*', 'categorias.id as CategoriaID', 'categorias.categoria','categorias.slug')->orderBy('id','desc')->paginate(5);
+        }
+        return view('layouts.buscador', compact('productos'));
+    }
+
 }
